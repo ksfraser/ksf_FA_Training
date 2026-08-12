@@ -61,7 +61,7 @@ class hooks_ksf_FA_Training extends hooks {
      * @return array [0] => $security_areas, [1] => $security_sections
      */
     function install_access() {
-        $security_sections[SS_ksf_FA_Training] = _("");
+        $security_sections[SS_ksf_FA_Training] = _("Training");
         $security_areas['SA_ksf_FA_TrainingVIEW'] = array(
             SS_ksf_FA_Training | 1, 
             _("View ")
