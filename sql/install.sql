@@ -1,7 +1,11 @@
 -- Training module database schema for FrontAccounting
 
 -- Training programs
-CREATE TABLE IF NOT EXISTS `fa_training_programs` (
+ALTER TABLE IF EXISTS `fa_training_programs` RENAME TO `0_ksf_training_programs`;
+ALTER TABLE IF EXISTS `fa_training_enrollments` RENAME TO `0_ksf_training_enrollments`;
+ALTER TABLE IF EXISTS `fa_training_sessions` RENAME TO `0_ksf_training_sessions`;
+
+CREATE TABLE IF NOT EXISTS `0_ksf_training_programs` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(255) NOT NULL,
     `description` TEXT,
@@ -18,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `fa_training_programs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Training enrollments
-CREATE TABLE IF NOT EXISTS `fa_training_enrollments` (
+CREATE TABLE IF NOT EXISTS `0_ksf_training_enrollments` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `program_id` INT(11) NOT NULL,
     `employee_id` INT(11) NOT NULL,
@@ -36,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `fa_training_enrollments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Training sessions
-CREATE TABLE IF NOT EXISTS `fa_training_sessions` (
+CREATE TABLE IF NOT EXISTS `0_ksf_training_sessions` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `program_id` INT(11) NOT NULL,
     `start_date` DATE NOT NULL,
@@ -52,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `fa_training_sessions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Module version
-INSERT INTO `fa_modules` (`name`, `version`, `enabled`, `installed`) VALUES
+INSERT INTO `0_ksf_modules` (`name`, `version`, `enabled`, `installed`) VALUES
 ('Training', '1.0.0', 1, NOW())
 ON DUPLICATE KEY UPDATE `version` = '1.0.0', `installed` = NOW();
 

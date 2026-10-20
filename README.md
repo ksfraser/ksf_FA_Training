@@ -120,7 +120,7 @@ enroll_employee([
 
 The module expects the following database tables:
 
-### fa_training_programs
+### ksf_training_programs
 | Column | Type | Description |
 |--------|------|-------------|
 | program_id | VARCHAR(20) | Primary key |
@@ -152,7 +152,7 @@ The module expects the following database tables:
 | materials | TEXT | Attached materials |
 | created_at | TIMESTAMP | Record creation time |
 
-### fa_training_enrollments
+### ksf_training_enrollments
 | Column | Type | Description |
 |--------|------|-------------|
 | enrollment_id | INT | Primary key |
@@ -177,7 +177,7 @@ The module expects the following database tables:
 | rating | DECIMAL(3,2) | Average rating |
 | created_at | TIMESTAMP | Record creation time |
 
-### fa_training_sessions
+### ksf_training_sessions
 | Column | Type | Description |
 |--------|------|-------------|
 | session_id | VARCHAR(20) | Primary key |

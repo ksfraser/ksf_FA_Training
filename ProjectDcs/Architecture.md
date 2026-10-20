@@ -228,7 +228,7 @@ Provides presentation logic and helpers.
          │ 1:N                  │ 1:N
          ▼                      ▼
 ┌─────────────────────────────────────────────────────┐
-│              fa_training_programs                    │
+│              ksf_training_programs                    │
 │ ┌────────────────────────────────────────────┐    │
 │ │ program_id (PK)                         │    │
 │ │ name                                  │    │
@@ -263,7 +263,7 @@ Provides presentation logic and helpers.
                          │ 1:N
                          ▼
 ┌─────────────────────────────────────────────────────┐
-│           fa_training_enrollments               │
+│           ksf_training_enrollments               │
 │ ┌────────────────────────────────────────────┐    │
 │ │ enrollment_id (PK)                       │    │
 │ │ program_id (FK) ──────────► programs       │    │
@@ -285,15 +285,15 @@ Provides presentation logic and helpers.
         │ 1:N                 │
         ▼                     │ 1:N
 ┌─────────────────────────────────────┐
-│         fa_training_programs         │
+│         ksf_training_programs         │
 └─────────────────────────────────────┘
 ```
 
 ### 3.2 Table Details
 
-#### fa_training_programs
+#### ksf_training_programs
 ```sql
-CREATE TABLE `@TB_PREF@fa_training_programs` (
+CREATE TABLE `@TB_PREF@ksf_training_programs` (
     `program_id` VARCHAR(20) NOT NULL,
     `name` VARCHAR(100) NOT NULL,
     `description` TEXT,
@@ -334,13 +334,13 @@ CREATE TABLE `@TB_PREF@fa_training_courses` (
     KEY `idx_program` (`program_id`),
     KEY `idx_instructor` (`instructor_id`),
     CONSTRAINT `fk_course_program` FOREIGN KEY (`program_id`) 
-        REFERENCES `@TB_PREF@fa_training_programs` (`program_id`) ON DELETE CASCADE
+        REFERENCES `@TB_PREF@ksf_training_programs` (`program_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ```
 
-#### fa_training_enrollments
+#### ksf_training_enrollments
 ```sql
-CREATE TABLE `@TB_PREF@fa_training_enrollments` (
+CREATE TABLE `@TB_PREF@ksf_training_enrollments` (
     `enrollment_id` INT(11) NOT NULL AUTO_INCREMENT,
     `program_id` VARCHAR(20) NOT NULL,
     `employee_id` VARCHAR(100) NOT NULL,
@@ -358,7 +358,7 @@ CREATE TABLE `@TB_PREF@fa_training_enrollments` (
     KEY `idx_employee` (`employee_id`),
     KEY `idx_status` (`status`),
     CONSTRAINT `fk_enrollment_program` FOREIGN KEY (`program_id`) 
-        REFERENCES `@TB_PREF@fa_training_programs` (`program_id`) ON DELETE CASCADE
+        REFERENCES `@TB_PREF@ksf_training_programs` (`program_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ```
 
@@ -376,9 +376,9 @@ CREATE TABLE `@TB_PREF@fa_training_instructors` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ```
 
-#### fa_training_sessions
+#### ksf_training_sessions
 ```sql
-CREATE TABLE `@TB_PREF@fa_training_sessions` (
+CREATE TABLE `@TB_PREF@ksf_training_sessions` (
     `session_id` VARCHAR(20) NOT NULL,
     `program_id` VARCHAR(20) NOT NULL,
     `instructor_id` VARCHAR(100) DEFAULT NULL,
