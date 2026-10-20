@@ -54,7 +54,7 @@ function get_enrollments(array $filters = []): ?object
     global $db;
     $sql = "SELECT e.*, p.name as program_name, p.type, emp.name as employee_name FROM " . TB_PREF . "training_enrollments e
         LEFT JOIN " . TB_PREF . "training_programs p ON e.program_id = p.id
-        LEFT JOIN " . TB_PREF . "hr_employees emp ON e.employee_id = emp.id WHERE 1=1";
+        LEFT JOIN " . TB_PREF . "ksf_training_employees emp ON e.employee_id = emp.id WHERE 1=1";
     
     if (!empty($filters['program_id'])) {
         $sql .= " AND e.program_id = " . $filters['program_id'];
